@@ -27,7 +27,6 @@
     "compression-webpack-plugin": "^11.1.0",
     "eslint": "^8.2.0",
     "eslint-plugin-vue": "^9.26.0",
-    "fibers": "^5.0.3",
     "node-sass": "^9.0.0",
     "sass": "^1.77.4",
     "sass-loader": "^14.2.1",
@@ -36,8 +35,8 @@
     "workbox-webpack-plugin": "^7.1.0"
   },
   "engines": {
-    "node": "18.19.0",
-    "npm": "10.8.1"
+    "node": "20.14.0",
+    "npm": "10.7.0"
   },
   "engineStrict": true
 }

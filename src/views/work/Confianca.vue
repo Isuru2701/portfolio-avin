@@ -299,6 +299,7 @@ import '@/styles/work.scss'
 import '@/styles/work/confianca.scss'
 // ScrollMagic
 import * as ScrollMagic from 'scrollmagic'
+import gsap from 'gsap/all';
 
 export default {
     name: 'confianca',
@@ -307,7 +308,7 @@ export default {
     },
     data() {
         return {
-            intro: new TimelineMax(),
+            intro: gsap.timeline(),
             scroller: new ScrollMagic.Controller(),
             qty: 0,
         }
@@ -377,7 +378,7 @@ export default {
          * @desc
          * mobile screens scene
          */
-        let tlMobile = new TimelineMax()
+        let tlMobile = gsap.timeline()
 
         tlMobile.staggerFrom('.screen', 4, {
             autoAlpha: 0,
@@ -400,7 +401,7 @@ export default {
          * @desc
          * scroll screens scene
          */
-        let tlScrolls = new TimelineMax()
+        let tlScrolls = gsap.timeline()
 
         tlScrolls
             .to('.scroll-pages img', 4, {
@@ -428,7 +429,7 @@ export default {
          * @desc
          * end screens scene
          */
-        let tlEnd = new TimelineMax(),
+        let tlEnd = gsap.timeline()
             end = document.querySelector('.end-screens').offsetHeight
 
         tlEnd.staggerFrom('.end-screens .screen', 4, {

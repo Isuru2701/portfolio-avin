@@ -70,6 +70,7 @@
 <script>
 // styles
 import '@/styles/work.scss'
+import gsap from 'gsap/all'
 
 export default {
     name: 'work',
@@ -78,7 +79,7 @@ export default {
     },
     data() {
         return {
-            intro: new TimelineMax(),
+            intro: gsap.timeline(),
         }
     },
     methods: {},

@@ -1,4 +1,6 @@
 // Zen
+import { gsap } from 'gsap';
+import { Power2 } from 'gsap';
 export default {
     tl: null,
     stop() {
@@ -17,7 +19,7 @@ export default {
 
         if (!body) return false
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .set(head, {
                 transformOrigin: '50% 90%',

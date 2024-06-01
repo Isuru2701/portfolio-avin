@@ -1,4 +1,5 @@
 // dino
+import {gsap, Power2} from 'gsap';
 export default {
     tl: null,
     rhythm: 0.3,
@@ -70,7 +71,7 @@ export default {
             window.open(songLink)
         })
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start', 0)
             .to(

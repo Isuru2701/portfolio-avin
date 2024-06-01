@@ -1,4 +1,6 @@
 // potion
+import { gsap } from 'gsap';
+import { Power2 } from 'gsap/all';
 export default {
     tl: null,
     r(min, max) {
@@ -19,7 +21,7 @@ export default {
 
         if (!bottle) return false
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start')
             .to(bottle, 3, {

@@ -1,7 +1,10 @@
 // mario
+
+import { gsap,SteppedEase } from "gsap";
+
 export default {
-    tl: new TimelineMax(),
-    mariotl: new TimelineMax(),
+    tl: new /*TimelineMax(), depreciated*/ gsap.timeline(),
+    mariotl: /* new TimelineMax(), depreciated*/ gsap.timeline(),
     bgmStart: null,
     bgmStomp: null,
     bgmEmpty: null,

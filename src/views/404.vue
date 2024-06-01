@@ -100,12 +100,13 @@ import '@/styles/err404.scss'
 // loop animations
 import Astro from '@/js/astro'
 import Coffee from '@/js/coffee'
+import gsap, { TimelineMax, Power3 } from 'gsap';
 
 export default {
     name: '404',
     data() {
         return {
-            intro: new TimelineMax(),
+            intro: gsap.timeline(),
         }
     },
     methods: {},

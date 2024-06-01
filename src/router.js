@@ -1,15 +1,16 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createApp } from 'vue'
 import Home from './views/Home.vue'
 import NProgress from 'nprogress'
+import { createRouter, createWebHistory } from 'vue-router'
+
 
 // use
-Vue.use(Router)
+
+let url = 'localhost:8080'
 
 // create
-const router = new Router({
-    mode: 'history',
-    base: process.env.BASE_URL,
+const router = createRouter({
+    history: createWebHistory(),
     routes: [
         {
             path: '/',
@@ -281,7 +282,7 @@ const router = new Router({
             },
         },
         {
-            path: '*',
+            path: '/:catchAll(.*)',
             name: `.err(404)`,
             component: () =>
                 import(/* webpackChunkName: "404" */ './views/404.vue'),

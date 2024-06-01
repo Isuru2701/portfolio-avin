@@ -2,10 +2,11 @@
  * @loop
  * A biz
  */
+import { gsap, Power2 } from 'gsap';
 export default {
     tl: null,
     build() {
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start', 0)
             .to(

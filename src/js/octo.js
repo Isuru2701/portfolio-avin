@@ -1,4 +1,6 @@
 // octo
+import { gsap } from "gsap";
+import { Power2 } from "gsap/all";
 export default {
     tl: null,
     r(min, max) {
@@ -14,7 +16,7 @@ export default {
         let body = document.querySelector('.octo-octo'),
             eye = document.querySelector('.octo-eye')
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start', 0)
             .fromTo(

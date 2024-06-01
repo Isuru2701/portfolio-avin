@@ -320,6 +320,8 @@ import '@/styles/work/admin.scss'
 // ScrollMagic
 import * as ScrollMagic from 'scrollmagic'
 
+import {gsap} from 'gsap';
+
 export default {
     name: 'admin',
     props: {
@@ -327,7 +329,7 @@ export default {
     },
     data() {
         return {
-            intro: new TimelineMax(),
+            intro: gsap.timeline(),
             scroller: new ScrollMagic.Controller(),
         }
     },
@@ -387,9 +389,9 @@ export default {
          * @desc
          * before-after scene
          */
-        let tlComparison = new TimelineMax()
+        let tlComparison = gsap.timeline()
 
-        tlComparison.to('.old-new .new', 4, {
+        tlComparison.to(4, {
             width: '100%',
             ease: Power0.easeNone,
         })
@@ -406,7 +408,7 @@ export default {
          * @desc
          * more screens scene
          */
-        let tlMoreScreens = new TimelineMax()
+        let tlMoreScreens = gsap.timeline()
 
         tlMoreScreens.staggerFrom('.more-screens .m, .more-screens .d', 4, {
             xPercent: 100,

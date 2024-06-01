@@ -1,4 +1,5 @@
 // Pepe
+import { gsap } from 'gsap';
 export default {
     tl: null,
     oceantl: null,
@@ -41,7 +42,7 @@ export default {
             particle.className = `particle p${i}`
             particles.appendChild(particle)
 
-            this.ptl[i] = new TimelineMax({ paused: true })
+            this.ptl[i] = gsap.timeline({ paused: true })
             this.ptl[i]
                 .delay(this.r(0, 7))
                 .to(`.particle.p${i}`, this.r(5, 7), {
@@ -58,7 +59,7 @@ export default {
         let wave1 = document.querySelector('.ocean-waves.w1'),
             wave2 = document.querySelector('.ocean-waves.w2')
 
-        this.oceantl = new TimelineMax({ paused: true })
+        this.oceantl = gsap.timeline({ paused: true })
         this.oceantl
             .fromTo(
                 wave1,
@@ -118,7 +119,7 @@ export default {
             ear = document.querySelector('.bg-head-ear'),
             rhythm = this.r(0.2, 0.4)
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start', 0)
             // am/pa
@@ -283,7 +284,7 @@ export default {
             particle.className = `particle p${i}`
             particles.appendChild(particle)
 
-            this.ptl[i] = new TimelineMax({ paused: true })
+            this.ptl[i] = gsap.timeline({ paused: true })
             this.ptl[i]
                 .delay(this.r(0, 7))
                 .to(`.particle.p${i}`, this.r(5, 7), {
@@ -300,7 +301,7 @@ export default {
         let wave1 = document.querySelector('.ocean-waves.w1'),
             wave2 = document.querySelector('.ocean-waves.w2')
 
-        this.oceantl = new TimelineMax({ paused: true })
+        this.oceantl = gsap.timeline({ paused: true })
         this.oceantl
             .fromTo(
                 wave1,
@@ -346,7 +347,7 @@ export default {
             blink = document.querySelector('.pepe .blink'),
             rhythm = this.r(0.2, 0.4)
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start', 0)
             // metals
@@ -421,7 +422,7 @@ export default {
         let wave1 = document.querySelector('.ocean-waves.w1'),
             wave2 = document.querySelector('.ocean-waves.w2')
 
-        this.oceantl = new TimelineMax({ paused: true })
+        this.oceantl = gsap.timeline({ paused: true })
         this.oceantl
             .fromTo(
                 wave1,
@@ -467,7 +468,7 @@ export default {
             blink = document.querySelector('.pepe .blink'),
             rhythm = 0.4
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start', 0)
             // metals

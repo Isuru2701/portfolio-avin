@@ -1,4 +1,6 @@
 // et
+import { gsap } from "gsap";
+import { Power2, Power0 } from "gsap/all";
 export default {
     tl: null,
     stop() {
@@ -15,7 +17,7 @@ export default {
             ship = document.querySelector('.et-ship'),
             eye = document.querySelector('.et-eye')
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .clear()
             .addLabel('start', 0)

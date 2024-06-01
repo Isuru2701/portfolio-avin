@@ -1,11 +1,13 @@
 // astro
+import {gsap, Power2, Elastic} from 'gsap';
+
 export default {
     tl: null,
     r(min, max) {
         return Math.random() * (max - min) + min
     },
     build() {
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .set('.astro-head', {
                 rotation: -15,

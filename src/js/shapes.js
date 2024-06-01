@@ -1,4 +1,5 @@
 // Shapes
+import { gsap, Power3 } from 'gsap';
 export default {
     tl: null,
     stop() {
@@ -13,7 +14,7 @@ export default {
 
         if (!smart) return false
 
-        this.tl = new TimelineMax({
+        this.tl = gsap.timeline({
             paused: true,
             ease: Power3.easeInOut,
         })

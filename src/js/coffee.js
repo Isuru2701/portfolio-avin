@@ -1,11 +1,13 @@
 // coffee
+import {gsap, Power1} from 'gsap';
+
 export default {
     tl: null,
     r(min, max) {
         return Math.random() * (max - min) + min
     },
     build() {
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl.to('.coffee-coffee', 5, {
             yPercent: this.r(20, 200),
             xPercent: this.r(-50, 50),

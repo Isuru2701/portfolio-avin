@@ -1,4 +1,6 @@
 // filomena
+import { gsap } from "gsap"
+import { Power2 } from "gsap/all"
 export default {
     tl: null,
     r(min, max) {
@@ -19,7 +21,7 @@ export default {
             leftArm = document.querySelector('.filomena-l-arm'),
             rightArm = document.querySelector('.filomena-r-arm')
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start')
             .to([skirt, backSkirt], 3, {

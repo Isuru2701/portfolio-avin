@@ -228,6 +228,8 @@ import '@/styles/work.scss'
 import '@/styles/work/desbravando.scss'
 // ScrollMagic
 import * as ScrollMagic from 'scrollmagic'
+import gsap from 'gsap/all';
+
 
 export default {
     name: 'desbravando',
@@ -236,7 +238,7 @@ export default {
     },
     data() {
         return {
-            intro: new TimelineMax(),
+            intro: gsap.timeline(),
             scroller: new ScrollMagic.Controller(),
         }
     },
@@ -296,7 +298,7 @@ export default {
          * @desc
          * cd disc scene
          */
-        let tlDisc = new TimelineMax()
+        let tlDisc = gsap.timeline()
         if (this.viewport.is768) {
             // 768 screen animation
             tlDisc
@@ -378,7 +380,7 @@ export default {
          * @desc
          * cd gallery scene
          */
-        let tlGallery = new TimelineMax()
+        let tlGallery = gsap.timeline()
 
         tlGallery.staggerTo('.gallery-inspiration li', 4, {
             yPercent: -40,
@@ -398,7 +400,7 @@ export default {
          * @desc
          * cd logo scene
          */
-        let tlLogo = new TimelineMax()
+        let tlLogo = gsap.timeline()
 
         tlLogo
             .staggerTo(

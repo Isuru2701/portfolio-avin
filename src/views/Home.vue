@@ -55,6 +55,7 @@
 import '@/styles/home.scss'
 // ScrollMagic
 import * as ScrollMagic from 'scrollmagic'
+import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
 // components
 import Intro from '@/components/Home/Intro.vue'
 import Titles from '@/components/Home/Titles.vue'
@@ -79,6 +80,7 @@ import Potion from '@/js/potion'
 import Pepe from '@/js/pepe'
 import Mario from '@/js/mario'
 import Castle from '@/js/ghibli'
+import { gsap, Power3, Power2, Power1 } from 'gsap'
 
 export default {
     name: 'home',
@@ -87,7 +89,7 @@ export default {
     },
     data() {
         return {
-            intro: new TimelineMax(),
+            intro: new gsap.timeline(),
             scroller: new ScrollMagic.Controller(),
             scenes: [],
             timeLines: [],
@@ -166,13 +168,16 @@ export default {
              * and keep the momentum effect on all browsers
              */
             const scenesElements = document.querySelectorAll('.scene')
+            scenesElements.forEach((element) => {
+                console.error("HEY", element)
+            })
             for (let [i, scenesElement] of Array.from(
                 scenesElements
             ).entries()) {
                 // tweeners, to animate the time lines' progress, to add momentum
-                this.tweeners[i] = new TimelineMax()
+                this.tweeners[i] = new gsap.timeline()
                 // time lines
-                this.timeLines[i] = new TimelineMax({ paused: true })
+                this.timeLines[i] = gsap.timeline()({ paused: true })
                 // create scenes on ScrollMagic
                 this.scenes[i] = new ScrollMagic.Scene({
                     // trigger on the scene element
@@ -664,12 +669,12 @@ export default {
         },
         sceneEarlyDays() {
             // Clouds parallax
-            let cloudsTimeline = new TimelineMax({ paused: true }),
-                cloudsTweener = new TimelineMax()
+            let cloudsTimeline = gsap.timeline({ paused: true }),
+                cloudsTweener = gsap.timeline()
             cloudsTweener
-                .to('.cloud-1', 20, { rotation: 0 })
+                .to(20, { rotation: 0 })
                 .eventCallback('onUpdate', () => {
-                    TweenLite.to(cloudsTimeline, 4, {
+                    gsap.to(cloudsTimeline, 4, {
                         progress: cloudsTweener.progress(),
                         ease: Power3.easeOut,
                     })
@@ -787,17 +792,17 @@ export default {
         },
         sceneOcean() {
             // Pepe parallax
-            let pepeTimeline = new TimelineMax({ paused: true }),
-                pepeTweener = new TimelineMax(),
+            let pepeTimeline = gsap.timeline({ paused: true }),
+                pepeTweener = gsap.timeline(),
                 pepeLength =
                     window.innerWidth +
                     document.querySelector('.pepe').offsetWidth +
                     16
 
             pepeTweener
-                .to('.pepe', 20, { rotation: 0 })
+                .to(20, { rotation: 0 })
                 .eventCallback('onUpdate', () => {
-                    TweenLite.to(pepeTimeline, 4, {
+                    gsap.to(pepeTimeline, 4, {
                         progress: pepeTweener.progress(),
                         ease: Power3.easeOut,
                     })
@@ -882,13 +887,13 @@ export default {
         },
         sceneGhibli() {
             // Ghibli Grass parallax
-            let grassTimeline = new TimelineMax({ paused: true }),
-                grassTweener = new TimelineMax()
+            let grassTimeline = gsap.timeline({ paused: true }),
+                grassTweener = gsap.timeline()
 
             grassTweener
-                .to('.pepe', 20, { rotation: 0 })
+                .to(20, { rotation: 0 })
                 .eventCallback('onUpdate', () => {
-                    TweenLite.to(grassTimeline, 2, {
+                    gsap.to(grassTimeline, 2, {
                         progress: grassTweener.progress(),
                         ease: Power3.easeOut,
                     })
@@ -927,13 +932,13 @@ export default {
                 .addTo(this.scroller)
 
             // Ghibli Clouds parallax
-            let gCloudsTimeline = new TimelineMax({ paused: true }),
-                gCloudsTweener = new TimelineMax()
+            let gCloudsTimeline = gsap.timeline({ paused: true }),
+                gCloudsTweener = gsap.timeline()
 
             gCloudsTweener
-                .to('.pepe', 20, { rotation: 0 })
+                .to(20, { rotation: 0 })
                 .eventCallback('onUpdate', () => {
-                    TweenLite.to(gCloudsTimeline, 6, {
+                    gsap.to(gCloudsTimeline, 6, {
                         progress: gCloudsTweener.progress(),
                         ease: Power3.easeOut,
                     })
@@ -974,8 +979,8 @@ export default {
                 .addTo(this.scroller)
 
             // Howl's Moving Castle parallax
-            let castleTimeline = new TimelineMax({ paused: true }),
-                castleTweener = new TimelineMax(),
+            let castleTimeline = gsap.timeline({ paused: true }),
+                castleTweener = gsap.timeline(),
                 castleLength = '-120vw'
 
             if (this.viewport.is568)
@@ -988,9 +993,9 @@ export default {
                     'px'
 
             castleTweener
-                .to('.pepe', 20, { rotation: 0 })
+                .to(20, { rotation: 0 })
                 .eventCallback('onUpdate', () => {
-                    TweenLite.to(castleTimeline, 3, {
+                    gsap.to(castleTimeline, 3, {
                         progress: castleTweener.progress(),
                         ease: Power3.easeOut,
                     })

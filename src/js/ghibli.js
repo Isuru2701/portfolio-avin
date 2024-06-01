@@ -1,4 +1,6 @@
 // ghibli castle
+import { gsap } from 'gsap';
+import { RoughEase, Power2, Power0 } from 'gsap/all';
 export default {
     tl: null,
     r(min, max) {
@@ -28,7 +30,7 @@ export default {
             foliage3 = document.querySelectorAll('.castle .foliage3'),
             castle = document.querySelectorAll('.castle')
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start', 0)
             .to(
@@ -229,7 +231,7 @@ export default {
             ear = document.querySelector('.castle .ear'),
             castle = document.querySelectorAll('.castle')
 
-        this.tl = new TimelineMax({ paused: true })
+        this.tl = gsap.timeline({ paused: true })
         this.tl
             .addLabel('start', 0)
             // .to(top, 2, {

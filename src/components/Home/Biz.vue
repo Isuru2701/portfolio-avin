@@ -135,7 +135,7 @@
                     </g>
                 </svg>
                 <!--svg v-if="!viewport.is1024" xmlns="http://www.w3.org/2000/svg" id="filomena" viewBox="0 0 100 100" aria-labelledby="filomenaDesc">
-                    <desc id="filomenaDesc">A calm orange shrimp, with a smile on her face, swimming with her little
+                    <desc-- id="filomenaDesc">A calm orange shrimp, with a smile on her face, swimming with her little
                         legs
                     </desc-->
                     <g class="filomena-filomena">
@@ -198,7 +198,7 @@
                         </g>
                         <path class="filomena-r-foot" fill="#ff6d42" d="M72.3 71.7c-5.6 4.9-15.6 14.7-20.6 19.9-1.1 1.2-.7 3.7 1.3 3.2 4-.9 9.3-3.7 14.3-8.6 4.5-4.4 4.9-10.2 5.9-13.9.2-.6-.5-1-.9-.6z"/>
                     </g>
-                </svg>
+                <!-- </svg> -->
                 <svg v-if="!viewport.is1024" xmlns="http://www.w3.org/2000/svg" id="octo" viewBox="0 0 100 100" aria-labelledby="octoDesc">
                     <desc id="octoDesc">A green one-eyed octopus, smiling and swimming around with his little
                         tentacles

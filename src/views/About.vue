@@ -287,7 +287,7 @@ export default {
          */
         let tlHeader = new TimelineMax()
 
-        tlHeader.to('.header-bg', 4, {
+        tlHeader.to(4, {
             autoAlpha: 1,
             ease: Power0.easeNone,
         })

@@ -1,5 +1,5 @@
 <template>
-    <div id="app" :class="this.$route.meta.bodyClass">
+    <div :class="this.$route.meta.bodyClass">
         <Spinner></Spinner>
         <BgBody />
 
@@ -25,15 +25,17 @@ import '@/styles/app.scss'
 import '@/styles/nprogress.scss'
 // GSAP + ScrollMagic
 import * as ScrollMagic from 'scrollmagic'
-import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
-ScrollMagicPluginGsap(ScrollMagic, TweenMax, gsap.timeline())
 // Components
 import Header from '@/components/Header.vue'
 import Spine from '@/components/Spine.vue'
 import BgBody from '@/components/BgBody.vue'
-import Spinner from './components/Spinner.vue'
+import Spinner from '@/components/Spinner.vue'
 import router from './router';
-import { gsap,Power3, Elastic, TweenMax } from "gsap"
+import { gsap,Power3, Elastic, TimelineMax } from "gsap"
+
+
+// import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
+// ScrollMagicPluginGsap(ScrollMagic, gsap);
 
 export default {
     name: 'App',

@@ -12,7 +12,7 @@ app.use(router)
 // Analytics
 // app.use(VueAnalytics, {
 //     id: 'UA-75833214-1',
-//     router,
+//     router
 // })
 
 // service worker

@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+// import { createApp } from 'vue'
 import Home from './views/Home.vue'
 import NProgress from 'nprogress'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -6,7 +6,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // use
 
-let url = 'localhost:8080'
 
 // create
 const router = createRouter({

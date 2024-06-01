@@ -3,7 +3,7 @@
 import { gsap,SteppedEase } from "gsap";
 
 export default {
-    tl: new /*TimelineMax(), depreciated*/ gsap.timeline(),
+    tl: /*TimelineMax(), depreciated*/ gsap.timeline(),
     mariotl: /* new TimelineMax(), depreciated*/ gsap.timeline(),
     bgmStart: null,
     bgmStomp: null,
@@ -89,7 +89,7 @@ export default {
 
                 // setup
                 let coin = null,
-                    newCoin = new TimelineMax()
+                    newCoin = gsap.timeline()
 
                 // animate mario jump + box
                 this.marioJump(i)
@@ -157,7 +157,7 @@ export default {
                         `
                         )
                         // animate message
-                        let msg = new TimelineMax()
+                        let msg = gsap.timeline()
                         msg.to('.mario-msg', 1, {
                             onStart: () => this.bgmExit.play(),
                             scale: 1,
@@ -181,7 +181,7 @@ export default {
                                             event.code === 'Escape'
                                         ) {
                                             // hide & remove msg
-                                            let tl = new TimelineMax()
+                                            let tl =  gsap.timeline()
                                             tl.to(
                                                 '.mario-msg, .mario-msg-overlay',
                                                 1,

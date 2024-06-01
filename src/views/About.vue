@@ -235,13 +235,13 @@
 // styles
 import '@/styles/about.scss'
 // ScrollMagic
-import * as ScrollMagic from 'scrollmagic'
+// import * as ScrollMagic from 'scrollmagic'
 
 export default {
     name: 'about',
     data() {
         return {
-            intro: new TimelineMax(),
+            intro: gsap.timeline(),
             scroller: new ScrollMagic.Controller(),
         }
     },
@@ -285,7 +285,7 @@ export default {
          * @desc
          * header background scene
          */
-        let tlHeader = new TimelineMax()
+        let tlHeader = gsap.timeline()
 
         tlHeader.to(4, {
             autoAlpha: 1,

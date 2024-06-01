@@ -71,6 +71,7 @@
 // styles
 import '@/styles/work.scss'
 import gsap from 'gsap/all'
+import { Power3 } from 'gsap'
 
 export default {
     name: 'work',

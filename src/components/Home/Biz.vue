@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="container">
-                <!--svg xmlns="http://www.w3.org/2000/svg" id="abiz" viewBox="0 0 100 100" aria-labelledby="aBizTitle aBizDesc">
+                <svg xmlns="http://www.w3.org/2000/svg" id="abiz" viewBox="0 0 100 100" aria-labelledby="aBizTitle aBizDesc">
                     <title id="aBizTitle">Biz, the BizCommerce mascot</title>
                     <desc id="aBizDesc">She is a cute light blue pentagon, holding the Magento logo inside an orange
                         circle
@@ -43,7 +43,7 @@
                             <path class="magento-logo" fill="#FFF" d="M16.8 47.3l-2.6-1.2-2 2 .6 3.6.9.6-.6-3.9.9-.9.7 4.5.5.3.5-.5-.8-4.4 1.2.5.6 3.8.7-.8z"/>
                         </g>
                     </g>
-                </svg-->
+                </svg>
                 <div id="abiz" aria-labelledby="aBizTitle aBizDesc" width="100" height="100">
                     <title id="aBizTitle">Biz, the BizCommerce mascot</title>
                     <desc id="aBizDesc">She is a cute light blue pentagon, holding the Magento logo inside an orange

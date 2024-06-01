@@ -54,8 +54,7 @@
 // style
 import '@/styles/home.scss'
 // ScrollMagic
-import * as ScrollMagic from 'scrollmagic'
-import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
+
 // components
 import Intro from '@/components/Home/Intro.vue'
 import Titles from '@/components/Home/Titles.vue'
@@ -80,7 +79,11 @@ import Potion from '@/js/potion'
 import Pepe from '@/js/pepe'
 import Mario from '@/js/mario'
 import Castle from '@/js/ghibli'
-import { gsap, Power3, Power2, Power1 } from 'gsap'
+import {gsap, Power3, Power2, Power1 } from "gsap/dist/gsap";
+import * as ScrollMagic from 'scrollmagic'
+import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap'
+
+ScrollMagicPluginGsap(ScrollMagic, gsap);
 
 export default {
     name: 'home',
@@ -89,7 +92,7 @@ export default {
     },
     data() {
         return {
-            intro: new gsap.timeline(),
+            intro: gsap.timeline(),
             scroller: new ScrollMagic.Controller(),
             scenes: [],
             timeLines: [],
@@ -100,7 +103,8 @@ export default {
         // before leaving the page, in case of refresh
         window.addEventListener('beforeunload', () => window.scroll(0, 0))
     },
-    mounted() {
+    async mounted() {
+        console.log("Component has been mounted")
         /**
          * @TODO code split animations
          *       optimize code
@@ -108,6 +112,7 @@ export default {
          */
 
         // 01. play Intro
+        this.ctx = gsap.context(() => {
         this.playIntro()
         // 02. setup time lines and scenes
         this.setupScenes()
@@ -133,6 +138,11 @@ export default {
         this.sceneGhibli()
         // </wrapper>
         this.sceneWrapper()
+        });
+    },
+
+    unmounted() {
+        this.ctx.revert();
     },
     beforeDestroy() {
         // stop loop animations
@@ -168,16 +178,19 @@ export default {
              * and keep the momentum effect on all browsers
              */
             const scenesElements = document.querySelectorAll('.scene')
-            scenesElements.forEach((element) => {
-                console.error("HEY", element)
-            })
             for (let [i, scenesElement] of Array.from(
                 scenesElements
             ).entries()) {
+                console.log(i, scenesElement)
+                // create a tween for this scene element
+                let tween = gsap.to(scenesElement, {
+                    autoAlpha: 1,
+                    duration: 1,
+                })
                 // tweeners, to animate the time lines' progress, to add momentum
-                this.tweeners[i] = new gsap.timeline()
+                this.tweeners[i] = gsap.timeline().add(tween)
                 // time lines
-                this.timeLines[i] = gsap.timeline()({ paused: true })
+                this.timeLines[i] = gsap.timeline({ paused: true })
                 // create scenes on ScrollMagic
                 this.scenes[i] = new ScrollMagic.Scene({
                     // trigger on the scene element
@@ -187,19 +200,15 @@ export default {
                     // lasts for the scene element height
                     duration: scenesElement.offsetHeight,
                 })
-                    .setTween(this.tweeners[i])
+                    .setTween(this.tweeners[i]) // Set the tween
                     .addTo(this.scroller)
                     .reverse(true)
                     .setClassToggle(scenesElement, 'active')
                 // animate the progress in the time lines
-                this.tweeners[i]
-                    .to(scenesElement, 1, { autoAlpha: 1 }) // fake, just to have some progress
-                    .eventCallback('onUpdate', (event) => {
-                        TweenLite.to(this.timeLines[i], 0.5, {
-                            progress: this.tweeners[i].progress(),
-                            ease: Power0.easeNone,
-                        })
-                    })
+                this.tweeners[i].eventCallback('onUpdate', () => {
+                    // Update the progress of ScrollMagic
+                    this.scenes[i].progress(this.tweeners[i].progress())
+                })
             }
         },
         playIntro() {
@@ -207,6 +216,8 @@ export default {
              * @desc
              * intro scene
              */
+            console.log("PLAY INTRO")
+
             this.intro
                 .addLabel('enter', 1)
                 .from(
@@ -237,6 +248,7 @@ export default {
              * play and stop loop animations
              * based on the scenes been played
              */
+             console.log("HOOK LOOPS")
             this.scenes[0].on('enter', (e) => {
                 if (e.scrollDirection === 'FORWARD') {
                 }
@@ -409,6 +421,7 @@ export default {
              * @desc
              * mount loop animations
              */
+             console.log("BUILD LOOPS")
             BizBiz.build()
             BizAstro.build()
             BizCoffee.build()
@@ -440,6 +453,7 @@ export default {
              * @desc
              * Scrolling animations time lines
              */
+            console.log("SCENE CURRICULUM VITAE")
             // CurriculumVitae()
             this.timeLines[0]
                 .set('#curriculum .title-container', { autoAlpha: 1 }) // show animations
@@ -475,6 +489,7 @@ export default {
         },
         sceneBizTitle() {
             // biz()
+            console.log("SCENE BIZ TITLE")
             this.timeLines[1]
                 // next scene characters
                 .set('#filomena', {
@@ -534,6 +549,8 @@ export default {
                     },
                     'start+=2'
                 )
+
+  
         },
         sceneBizZen() {
             // Biz Commerce 1
@@ -569,6 +586,7 @@ export default {
                     0.2,
                     'start'
                 )
+ 
         },
         sceneBizEverybody() {
             // Biz Commerce 2
@@ -596,6 +614,8 @@ export default {
                     0.2,
                     'start'
                 )
+
+   
         },
         sceneBizEnding() {
             // Biz Commerce 3
@@ -666,6 +686,7 @@ export default {
                     },
                     'start'
                 )
+   
         },
         sceneEarlyDays() {
             // Clouds parallax
@@ -789,6 +810,8 @@ export default {
                     autoAlpha: 0,
                     yPercent: -100,
                 })
+
+          
         },
         sceneOcean() {
             // Pepe parallax
@@ -830,10 +853,12 @@ export default {
             this.timeLines[6]
                 .set('#biz1 .container', { autoAlpha: 0 })
                 .to('.pepe-scenery', 8, { autoAlpha: 1 })
+
         },
         sceneFloatingHead() {
             // first company
             this.timeLines[7].addLabel('start', 0)
+        
         },
         sceneSunset() {
             // porta, kibe etc.
@@ -1028,6 +1053,8 @@ export default {
 
             // Ghibli 4 (gap)
             this.timeLines[14].addLabel('start', 0)
+
+
         },
         sceneWrapper() {
             this.timeLines[15]
